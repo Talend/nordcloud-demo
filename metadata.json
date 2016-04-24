@@ -1,0 +1,14 @@
+{
+  "name": "nordcloud-demo",
+  "version": "0.1.0",
+  "author": "nordcloud",
+  "summary": "Demo module to demonstrate best practice",
+  "license": "MIT",
+  "source": "https://github.com/aheumaier/nordcloud-demo",
+  "project_page": "https://github.com/aheumaier/nordcloud-demo",
+  "issues_url": "https://github.com/aheumaier/nordcloud-demo/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
