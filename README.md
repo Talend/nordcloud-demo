@@ -1,4 +1,4 @@
-# demo
+# Puppet Module Demo
 
 #### Table of Contents
 
@@ -15,19 +15,30 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This is a basic nordcloud puppet module skeleton. This README includes the required steps how to
+get here fast and to start developing modules aligned with puppet best practice.
+
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
+This section gives a brief description of the technology
 the module integrates with and what that integration enables. This section
 should answer the questions: "What does this module *do*?" and "Why would I use
 it?"
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+#### Basic module class generator
+Starting point is the [Puppetlabs module generator](https://docs.puppet.com/puppet/latest/reference/modules_publishing.html#build-your-module)
+which sets up basic module class structure alongside rake tasks like syntax and rspec-puppet unit testing
+making use of [puppetlabs_spec_helper](https://github.com/puppetlabs/puppetlabs_spec_helper).
+
+#### Simple Puppet Module Structure Pattern
+This module makes use of class ordering known as ["Simple Puppet Module Structure"](https://www.devco.net/archives/2012/12/13/simple-puppet-module-structure-redux.php)-Pattern.
+which asumes the following runtime ordering:
+```
+ demo <- demo::service <- demo::configure <- demo::install
+```
+This brings logical ordering like: "install before configure" and "configure before start service" to the module
+without introducing inter-module dependencies.
 
 ## Setup
 
@@ -46,6 +57,29 @@ etc.), mention it here.
 ### Beginning with demo
 
 The very basic steps needed for a user to get the module up and running.
+
+This start with having puppet on a box running the following command:
+``` sh
+~/$ puppet module generate nordcloud-demo
+```
+This generates us the module skeleton nodcloud-demo:
+```
+~/$ ls -al  nordcloud-demo
+insgesamt 60
+drwxrwxr-x 7 xxx xxx 4096 Apr 24 20:08 .
+drwxrwxr-x 8 xxx xxx 4096 Apr 24 19:31 ..
+-rw-r--r-- 1 xxx xxx  242 Apr 24 19:31 Gemfile
+-rw-rw-r-- 1 xxx xxx 1083 Apr 24 19:34 LICENSE
+drwxrwxr-x 2 xxx xxx 4096 Apr 24 19:31 manifests
+-rw-rw-r-- 1 xxx xxx  441 Apr 24 19:31 metadata.json
+-rw-r--r-- 1 xxx xxx  633 Apr 24 19:31 Rakefile
+-rw-rw-r-- 1 xxx xxx 3205 Apr 24 20:08 README.md
+drwxrwxr-x 4 xxx xxx 4096 Apr 24 19:40 spec
+drwxrwxr-x 2 xxx xxx 4096 Apr 24 19:31 tests
+
+```
+
+
 
 If your most recent release breaks compatibility or requires particular steps
 for upgrading, you may wish to include an additional section here: Upgrading
