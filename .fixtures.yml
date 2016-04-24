@@ -1,0 +1,6 @@
+fixtures:
+  symlinks:
+    demo: "#{source_dir}"
+  repositories:
+    firewall: "git://github.com/puppetlabs/puppetlabs-firewall"
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib"
