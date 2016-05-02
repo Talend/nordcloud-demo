@@ -24,7 +24,7 @@
 # === Examples
 #
 #  class { 'demo':
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
+#    my_var = 'demo string',
 #  }
 #
 # === Authors
@@ -33,9 +33,18 @@
 #
 # === Copyright
 #
-# Copyright 2016 Your name here, unless otherwise noted.
+# Copyright 2016 Talend.
 #
-class demo {
+class demo (
 
+  $my_var = $demo::params::my_var
+
+) inherits demo::params {
+
+
+  class { 'demo::install': } ->
+  class { 'demo::config': } ~>
+  class { 'demo::service': } ->
+  Class['demo']
 
 }
